@@ -13,4 +13,7 @@ then
 elif [ env = PROD ]
 then
    echo " Prod initiated"
+   
+else
+echo "select an env"
 fi
