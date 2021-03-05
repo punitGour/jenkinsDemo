@@ -9,7 +9,6 @@ then
    echo "Uat initiated"
 
 
-elif [ env = PROD ]
-then
+else
    echo " Prod initiated"
 fi
