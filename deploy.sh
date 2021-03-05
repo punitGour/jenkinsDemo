@@ -1,3 +1,4 @@
+#!/bin/sh
 if [ env = DEV ]
 then
   echo "Dev initiated" 
