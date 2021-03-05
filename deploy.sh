@@ -1,15 +1,15 @@
-if [ env == DEV ]
+if [ env = DEV ]
 then
   echo "Dev initiated" 
 
 
 
-elif [ env == UAT ]
+elif [ env = UAT ]
 then
    echo "Uat initiated"
 
 
-elif [ env == PROD ]
+elif [ env = PROD ]
 then
    echo " Prod initiated"
 fi
