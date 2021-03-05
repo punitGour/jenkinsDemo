@@ -1,16 +1,16 @@
 #!/bin/sh
-if [ env = DEV ]
+if [ $1 = DEV ]
 then
   echo "Dev initiated" 
 
 
 
-elif [ env = UAT ]
+elif [ $1 = UAT ]
 then
    echo "Uat initiated"
 
 
-elif [ env = PROD ]
+elif [ $1 = PROD ]
 then
    echo " Prod initiated"
    
