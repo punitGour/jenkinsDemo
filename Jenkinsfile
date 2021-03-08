@@ -50,17 +50,34 @@ pipeline {
             }
         }
 
-        stage('Build Deploy Code') {
-            //when {
-              //  branch 'develop'
-            //}
+
+
+        stage('Build Deploy Code to develop') {
+            when {
+                branch 'develop'
+            }
             steps {
                 sh """
                 echo "Building Artifact"
                 """
 
                 sh """
-                echo "Deploying Code"
+                echo "Deploying Code to develop"
+                """
+            }
+        }
+        
+         stage('Build Deploy Code master') {
+            when {
+                branch 'main'
+            }
+            steps {
+                sh """
+                echo "Building Artifact"
+                """
+
+                sh """
+                echo "Deploying Code to master"
                 """
             }
         }
