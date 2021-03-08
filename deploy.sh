@@ -16,20 +16,20 @@ APP_NAME_PROD="forevernewwhorders1_prod"
 if [ $1 = DEV ]
 then
   echo "Dev initiated" 
-  echo 'anypoint-cli --username=$CLOUDHUB_USR --password=$CLOUDHUB_PSW --environment="UAT" runtime-mgr cloudhub-application modify --runtime "3.9.4" --workerSize $WORKERSIZE_DEV --property $PROPERTY_DEV $APP_NAME_DEV "/var/lib/jenkins/workspace/forevernew-wh-orders/target/wh_orders_process_api-1.0.0-SNAPSHOT.zip"'
+  echo 'anypoint-cli --username=$2 --password=$3 --environment="UAT" runtime-mgr cloudhub-application modify --runtime "3.9.4" --workerSize $WORKERSIZE_DEV --property $PROPERTY_DEV $APP_NAME_DEV "/var/lib/jenkins/workspace/forevernew-wh-orders/target/wh_orders_process_api-1.0.0-SNAPSHOT.zip"'
 
 
 
 elif [ $1 = UAT ]
 then
    echo "Uat initiated"
-   echo 'anypoint-cli --username=$CLOUDHUB_USR --password=$CLOUDHUB_PSW --environment="UAT" runtime-mgr cloudhub-application modify --runtime "3.9.4" --workerSize $WORKERSIZE_UAT --property $PROPERTY_UAT $APP_NAME_UAT "/var/lib/jenkins/workspace/forevernew-wh-orders/target/wh_orders_process_api-1.0.0-SNAPSHOT.zip"'
+   echo 'anypoint-cli --username=$2 --password=$3 --environment="UAT" runtime-mgr cloudhub-application modify --runtime "3.9.4" --workerSize $WORKERSIZE_UAT --property $PROPERTY_UAT $APP_NAME_UAT "/var/lib/jenkins/workspace/forevernew-wh-orders/target/wh_orders_process_api-1.0.0-SNAPSHOT.zip"'
 
 
 elif [ $1 = PROD ]
 then
    echo " Prod initiated"
-   echo 'anypoint-cli --username=$CLOUDHUB_USR --password=$CLOUDHUB_PSW --environment="UAT" runtime-mgr cloudhub-application modify --runtime "3.9.4" --workerSize $WORKERSIZE_PROD --property $PROPERTY_PROD $APP_NAME_PROD "/var/lib/jenkins/workspace/forevernew-wh-orders/target/wh_orders_process_api-1.0.0-SNAPSHOT.zip"'
+   echo 'anypoint-cli --username=$2 --password=$3 --environment="UAT" runtime-mgr cloudhub-application modify --runtime "3.9.4" --workerSize $WORKERSIZE_PROD --property $PROPERTY_PROD $APP_NAME_PROD "/var/lib/jenkins/workspace/forevernew-wh-orders/target/wh_orders_process_api-1.0.0-SNAPSHOT.zip"'
    
 else
 echo "select an env"
