@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 WORKERSIZE_DEV=0.2
 WORKERSIZE_UAT=0.2
