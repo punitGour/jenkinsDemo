@@ -2,7 +2,7 @@ pipeline {
     agent any
     
     parameters {
-        choice(name: "DEPLOY_TO", choices: ["", "DEV", "UAT", "PROD"])
+        choice(name: "env", choices: ["", "DEV", "UAT", "PROD"])
     }
     
     tools {
@@ -74,19 +74,19 @@ else {
         stage("Deploy with choice param") {
             parallel {
                 stage("INT") {
-                    when { expression { params.DEPLOY_TO == "DEV" } }
+                    when { expression { params.env == "DEV" } }
                     steps {
                         sh "./deploy.sh DEV"
                     }
                 }
                 stage("PRE") {
-                    when { expression { params.DEPLOY_TO == "UAT" } }
+                    when { expression { params.env == "UAT" } }
                     steps {
                         sh "./deploy.sh UAT"
                     }
                 }
                 stage("PROD") {
-                    when { expression { params.DEPLOY_TO == "PROD" } }
+                    when { expression { params.env == "PROD" } }
                     steps {
                         sh "./deploy.sh PROD"
                     }
