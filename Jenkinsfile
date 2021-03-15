@@ -7,6 +7,12 @@ pipeline {
         jdk "JAVA_HOME"
     }
 
+ 
+
+ 
+
+ 
+
     stages {
         stage("git pull"){
             steps{
@@ -19,9 +25,11 @@ pipeline {
         stage('build with parameter'){
             steps {
                 script{
-properties([parameters([[$class: 'ChoiceParameter', choiceType: 'PT_SINGLE_SELECT', description: '''DEV
-UAT
-PROD
+                    properties([parameters([[$class: 'ChoiceParameter', choiceType: 'PT_SINGLE_SELECT', description: '', filterLength: 1, filterable: false, name: 'env', randomName: 'choice-parameter-4017106827748', script: [$class: 'GroovyScript', fallbackScript: [classpath: [], sandbox: false, script: 'return [ \'select parameter\']'], script: [classpath: [], sandbox: false, script: '''return [
+\'DEV\' ,
+\'UAT\' ,
+\'PROD\'
+]
 if (env.equals ("DEV")){
     return ["DEV"]
 }
@@ -36,8 +44,9 @@ return ["PROD"]
 }
 else {
     return ["select parameter from dropdown"]
-    }
-    ''', filterLength: 1, filterable: false, name: 'env1', randomName: 'choice-parameter-4645396782606']])])
+    }''']]]])])
+                }
+            }
         }
          stage('Build') {
              steps {
@@ -45,7 +54,7 @@ else {
                  echo 'mvn clean package'
             }
         }
-        stage('Deploy') {
+        stage(' Deploy') {
              environment {
              CLOUDHUB=credentials('githubcred')
           }
