@@ -7,12 +7,6 @@ pipeline {
         jdk "JAVA_HOME"
     }
 
- 
-
- 
-
- 
-
     stages {
         stage("git pull"){
             steps{
@@ -54,7 +48,7 @@ else {
                  echo 'mvn clean package'
             }
         }
-        stage(' Deploy') {
+        stage('Deploy') {
              environment {
              CLOUDHUB=credentials('githubcred')
           }
