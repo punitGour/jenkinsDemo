@@ -1,19 +1,17 @@
 pipeline {
     agent any
     
+    parameters {
+        choice(name: "env", choices: ["", "DEV", "UAT", "PROD"])
+    }
+    
     tools {
         // Install the Maven version configured as "M3" and add it to the path.
         maven "M3"
         jdk "JAVA_HOME"
     }
 
- 
-
- 
-
- 
-
-    stages {
+     stages {
         stage("git pull"){
             steps{
                 //git 'https://github.com/ForeverNewAWS/forevernew-wh-orders-api-v2'
@@ -71,6 +69,29 @@ else {
  
 
              }
+        }
+        
+        stage("Deploy with choice param") {
+            parallel {
+                stage("INT") {
+                    when { expression { params.env == "DEV" } }
+                    steps {
+                        sh "./deploy.sh DEV"
+                    }
+                }
+                stage("PRE") {
+                    when { expression { params.env == "UAT" } }
+                    steps {
+                        sh "./deploy.sh UAT"
+                    }
+                }
+                stage("PROD") {
+                    when { expression { params.env == "PROD" } }
+                    steps {
+                        sh "./deploy.sh PROD"
+                    }
+                }
+            }
         }
     }
 }
