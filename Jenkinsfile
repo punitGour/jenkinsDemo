@@ -7,11 +7,6 @@ pipeline {
         jdk "JAVA_HOME"
     }
 
- 
-
- 
-
- 
 
     stages {
         stage("git pull"){
@@ -51,7 +46,7 @@ else {
          stage('Build') {
              steps {
                  // Get some code from a GitHub repository
-                 echo 'mvn clean package'
+                 sh 'mvn clean package'
             }
         }
         stage(' Deploy') {
